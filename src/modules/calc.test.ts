@@ -1,13 +1,13 @@
-import Calc, { InputType, OperationType, CalcInput, CalcState } from "./calc";
+import Calc, { InputType, OperatorType, CalcInput, CalcState } from "./calc";
 
 
 test('derive state', () =>{
     const inputs: Array<CalcInput> = [
         {type: InputType.Numerical, value: 1},
         {type: InputType.Numerical, value: 2},
-        {type: InputType.Operation, operation: OperationType.Add },
+        {type: InputType.Operation, operation: OperatorType.Add },
         {type: InputType.Numerical, value: 3},
-        {type: InputType.Operation, operation: OperationType.Equals }
+        {type: InputType.Operation, operation: OperatorType.Equals }
     ]
 
     const state = Calc.getState(inputs);
