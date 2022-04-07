@@ -20,12 +20,11 @@ export type CalcState = {
     displayValue: number;
 }
 
-export type CalcInput = {type: InputType.Numerical, value: number} | {type: InputType.Operation, operation: OperationType}
+export type CalcInput = 
+| {type: InputType.Numerical, value: number} 
+| {type: InputType.Operator, operation: OperatorType }
 
-export type Operation = {
-    operator: OperatorType;
-    value: number;
-}
+
 
 
 
@@ -33,28 +32,42 @@ export type Operation = {
  * 
  * in: [1, 2, +, 3, =]
  * out: [{+ 12}, {+ 3}, {=}]
- */
+*/
 
 
- const getOperations = (inputs: Array<CalcInput>): Array<Operation> {
-    inputs.reduce<Array<CalcInput>>((operations, input) => {
-        const lastOperation: Operation = operations.length 
-        ? operations[operations.length - 1] 
-        : {operator: OperatorType.Add ,value: 0};
+export type Operation = {
+    operator: OperatorType;
+    value: number;
+}
+
+type OperationsBuilder = {
+    operations: Operation[],
+    working: Operation;
+}
 
 
-       switch(input.type){
-           case: InputType.Numerical:
-            lastOperation
-
-           case: InputType.Operator:
-       } 
-
-
-    return [{ operator: OperatorType.Add, value: 0}];
-    }, [] as Array<Operation>)
-
+const getOperations = (inputs: Array<CalcInput>): Array<Operation> {
+    const initialValue: OperationsBuilder = {
+        operations: [],
+        working: { operator: OperatorType.Add, value: 0},
+    }
+    const builder: OperationsBuilder = inputs.reduce((builder, input) => {
     
+        switch(input.type){
+            case InputType.Numerical:
+                const preValue = builder.working?.value || 0;
+                const newValue = preValue * 10 + input.value;
+                return {...builder, working: {value: newValue} };
+            
+            case InputType.Operator:
+                return{ operations: [...builder.operations, builder.working], 
+                working: {operator: input.operator, value: 0}
+            };
+        }       
+
+    }, initialValue);
+
+    return builder.operations;
 }
 
 const getState = (inputs: Array<CalcInput>) : CalcState => {
