@@ -25,16 +25,6 @@ export type CalcInput =
 | {type: InputType.Operator, operator: OperatorType }
 
 
-
-
-
-/**
- * 
- * in: [1, 2, +, 3, =]
- * out: [{+ 12}, {+ 3}, {=}]
-*/
-
-
 export type Operation = {
     operator: OperatorType;
     value: number;
@@ -86,7 +76,10 @@ const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
 }
 
 const getState = (inputs: Array<CalcInput>) : CalcState => {
-    return {displayValue: 0};
+    const operations = getOperations(inputs);
+    const total = operations.reduce<number>((sum, operation) => sum + operation.value, 0);
+    
+    return {displayValue: total};
 }
 
 
