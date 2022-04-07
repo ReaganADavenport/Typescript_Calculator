@@ -58,12 +58,20 @@ const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
             
             case InputType.Operator:
                 if(input.operator === OperatorType.Equals) {
-
+                    return { 
+                        operations: [
+                            ...builder.operations, 
+                            builder.working, 
+                            { operator: OperatorType.Equals, value: 0 }
+                        ], 
+                        working: { operator: OperatorType.Add, value: 0 }
+                    }
                 } else{
-                    return { operations: [...builder.operations, builder.working], 
+                    return { 
+                        operations: [...builder.operations, builder.working], 
                         working: {operator: input.operator, value: 0}
-                }
-               
+                    }
+                
             };
         }       
     },
