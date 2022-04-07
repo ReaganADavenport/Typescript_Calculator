@@ -22,6 +22,14 @@ const operations: Array<Operation> = [
 ]
 
 
+test('derives displayValue with no inputs', () =>{
+    const inputs: Array<CalcInput> = [ ]
+
+    const state = Calc.getState(inputs);
+    expect(state.displayValue).toEqual(0);
+});
+
+
 test('derives displayValue upon new numerical input', () =>{
     const inputs: Array<CalcInput> = [
         {type: InputType.Numerical, value: 1},

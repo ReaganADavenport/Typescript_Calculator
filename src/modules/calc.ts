@@ -77,6 +77,11 @@ const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
 
 const getState = (inputs: Array<CalcInput>) : CalcState => {
     const operations = getOperations(inputs);
+    const lastOperation = operations.length ? operations[operations.length -1] : null;
+    if(!lastOperation) return{displayValue: 0};
+
+    switch()
+
     const total = operations.reduce<number>((sum, operation) => sum + operation.value, 0);
     
     return {displayValue: total};
