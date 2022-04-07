@@ -11,9 +11,9 @@ export enum InputType{
 }
 
 export enum OperatorType {
-    Add,
-    Subtract,
-    Equals
+    Add = 'add',
+    Subtract = 'subtract',
+    Equals = 'equals',
 }
 
 export type CalcState = {
@@ -46,7 +46,7 @@ type OperationsBuilder = {
 }
 
 
-export const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
+const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
     const builder: OperationsBuilder = inputs.reduce<OperationsBuilder>(
         (builder, input) => {
     
@@ -57,8 +57,13 @@ export const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
                 return {...builder, working: {...builder.working, value: newValue} };
             
             case InputType.Operator:
-                return{ operations: [...builder.operations, builder.working], 
-                working: {operator: input.operator, value: 0}
+                if(input.operator === OperatorType.Equals) {
+
+                } else{
+                    return { operations: [...builder.operations, builder.working], 
+                        working: {operator: input.operator, value: 0}
+                }
+               
             };
         }       
     },
@@ -73,13 +78,12 @@ export const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
 }
 
 const getState = (inputs: Array<CalcInput>) : CalcState => {
-    const result = inputs.reduce();
-
     return {displayValue: 0};
 }
 
 
 const Calc = {
+    getOperations,
     getState
 }
 
