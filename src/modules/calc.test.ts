@@ -11,7 +11,7 @@ test('generates operations', () =>{
     ]
 
     
-    expect(Calc.getOperations(inputs)).toEqual(operations);
+    expect(Calc.getOperationsBuilder(inputs)).toEqual(operations);
 });
 
 

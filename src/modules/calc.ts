@@ -36,8 +36,8 @@ type OperationsBuilder = {
 }
 
 
-const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
-    const builder: OperationsBuilder = inputs.reduce<OperationsBuilder>(
+const getOperationsBuilder = (inputs: Array<CalcInput>): OperationsBuilder => {
+    return inputs.reduce<OperationsBuilder>(
         (builder, input) => {
     
         switch(input.type){
@@ -71,12 +71,11 @@ const getOperations = (inputs: Array<CalcInput>): Array<Operation> => {
         working: { operator: OperatorType.Add, value: 0 },
     }
     );
-
-    return builder.operations;
 }
 
 const getState = (inputs: Array<CalcInput>) : CalcState => {
-    const operations = getOperations(inputs);
+    const builder = getOperationsBuilder(inputs);
+    const { operations } = builder;
     const lastOperation = operations.length ? operations[operations.length -1] : null;
     
     if(!lastOperation) return{displayValue: 0}
@@ -101,7 +100,7 @@ const getState = (inputs: Array<CalcInput>) : CalcState => {
 
 
 const Calc = {
-    getOperations,
+    getOperationsBuilder,
     getState
 }
 
