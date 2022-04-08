@@ -71,3 +71,5 @@ test('derives final state with addition and subtraction', () =>{
     const state = Calc.getState(inputs);
     expect(state.displayValue).toEqual(10);
 });
+
+// Add tests for Multiplication and Division

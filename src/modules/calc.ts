@@ -6,6 +6,7 @@ export enum InputType{
 export enum OperatorType {
     Add = 'add',
     Subtract = 'subtract',
+    // add Multiply and Divide later
     Equals = 'equals',
 }
 
@@ -74,7 +75,7 @@ const getTotal = (operations:Array<Operation>) : number =>
                 
             case OperatorType.Subtract:
                 return sum - operation.value;
-
+            // Ditto here too.
             case OperatorType.Equals:
                 return sum;
         }
