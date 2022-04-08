@@ -1,10 +1,3 @@
-/**
- * Calculator Brain:
- * 
- * Input: ---> [UserInput, UserInput, UserInput, ...]
- * Generate: ---> { state }
- */
-
 export enum InputType{
     Numerical,
     Operator
@@ -81,12 +74,13 @@ const getTotal = (operations:Array<Operation>) : number =>
                 
             case OperatorType.Subtract:
                 return sum - operation.value;
-                
+
             case OperatorType.Equals:
                 return sum;
         }
     }, 0);
 
+    
 const getState = (inputs: Array<CalcInput>) : CalcState => {
     const builder = getOperationsBuilder(inputs);
     const { operations } = builder;
@@ -102,13 +96,7 @@ const getState = (inputs: Array<CalcInput>) : CalcState => {
             return{displayValue: builder.working.value};
     }
         
-}
-
-    
-
-    
-    
-    
+}  
 
 
 const Calc = {
