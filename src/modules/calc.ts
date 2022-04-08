@@ -78,8 +78,10 @@ const getTotal = (operations:Array<Operation>) : number =>
         switch(operation.operator){
             case OperatorType.Add:
                 return sum + operation.value;
+                
             case OperatorType.Subtract:
                 return sum - operation.value;
+                
             case OperatorType.Equals:
                 return sum;
         }
