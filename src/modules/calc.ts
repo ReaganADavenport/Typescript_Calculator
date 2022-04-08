@@ -87,7 +87,7 @@ const getState = (inputs: Array<CalcInput>) : CalcState => {
             return {displayValue: total};
         
         default:
-            return{displayValue: lastOperation?.value || 0};
+            return{displayValue: builder.working.value};
     }
         
 }
