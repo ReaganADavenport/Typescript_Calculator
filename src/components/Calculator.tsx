@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Calc, {CalcInput} from "../modules/calc";
+import Calc, {CalcInput, InputType} from "../modules/calc";
 import Button, { ButtonType } from "./Button";
 
 const Container = styled.div `
@@ -23,13 +23,16 @@ const Display = styled.div`
     text-align: right;
 `;
 
-const handleNumerical = (value: number) => () => {
-    
-}
 
 const Calculator: React.FC<{}> = () => {
     const[inputs, setInputs] = useState<Array<CalcInput>>([]);
     const state = Calc.getState(inputs);
+    console.log(inputs);
+
+    const handleNumerical = (value: number) => () => {
+        setInputs(prev => [...prev, {type:InputType.Numerical, value}])
+    
+    }
 
     return(
         <Container>
