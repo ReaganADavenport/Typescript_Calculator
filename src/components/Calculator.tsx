@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Calc, {CalcInput, InputType} from "../modules/calc";
+import Calc, {CalcInput, InputType, OperatorType} from "../modules/calc";
 import Button, { ButtonType } from "./Button";
 
 const Container = styled.div `
@@ -29,8 +29,16 @@ const Calculator: React.FC<{}> = () => {
     const state = Calc.getState(inputs);
     console.log(inputs);
 
+    const appendInput = (input: CalcInput): void => {
+        setInputs(prev => [...prev, input])
+    }
+
     const handleNumerical = (value: number) => () => {
-        setInputs(prev => [...prev, {type:InputType.Numerical, value}])
+        appendInput({ type: InputType.Numerical, value });
+    }
+
+    const handleOperator = (operator: OperatorType ) => () => {
+        appendInput({ type: InputType.Operator, operator });
     
     }
 
@@ -40,9 +48,9 @@ const Calculator: React.FC<{}> = () => {
                 <Display>{state.displayValue}</Display>
                 <Button label="AC" position={[0,1]} width={2}></Button>
                 <Button label="Oops" position={[2,1]} width={2}></Button>
-                <Button label="+" position={[3,2]}></Button>
-                <Button label="-" position={[3,3]}></Button>
-                <Button label="=" position={[3,4]} height={2}></Button>
+                <Button label="+" position={[3,2]} onClick={handleOperator(OperatorType.Add)}></Button>
+                <Button label="-" position={[3,3]} onClick={handleOperator(OperatorType.Subtract)}></Button>
+                <Button label="=" position={[3,4]} height={2} onClick={handleOperator(OperatorType.Equals)}></Button>
                 <Button buttonType={ButtonType.Number} label="9" position={[2,2]} onClick={handleNumerical(9)}></Button>
                 <Button buttonType={ButtonType.Number} label="8" position={[1,2]} onClick={handleNumerical(8)}></Button>
                 <Button buttonType={ButtonType.Number} label="7" position={[0,2]} onClick={handleNumerical(7)}></Button>
