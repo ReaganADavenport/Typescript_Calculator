@@ -17,7 +17,7 @@ type Props = React.HTMLProps<HTMLButtonElement> & {
 
 const StyledButton = styled.button`
     background: #727171;
-    border: none;
+    // border: none;
     border-radius: 8px;
     color: white;
     font-size: 24px;

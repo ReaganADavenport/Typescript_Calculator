@@ -47,11 +47,12 @@ const Calculator: React.FC<{}> = () => {
         <Container>
             <Grid>
                 <Display>{state.displayValue}</Display>
-                <Button label="AC" position={[0,1]} width={2} onClick={handleAllClear}></Button>
-                <Button label="Oops" position={[2,1]} width={2}></Button>
-                <Button label="+" position={[3,2]} onClick={handleOperator(OperatorType.Add)}></Button>
-                <Button label="-" position={[3,3]} onClick={handleOperator(OperatorType.Subtract)}></Button>
-                <Button label="=" position={[3,4]} height={2} onClick={handleOperator(OperatorType.Equals)}></Button>
+                <Button label="AC" position={[0,1]} width={3} onClick={handleAllClear}></Button>
+                <Button label="+" position={[3,1]} onClick={handleOperator(OperatorType.Add)}></Button>
+                <Button label="-" position={[3,2]} onClick={handleOperator(OperatorType.Subtract)}></Button>
+                <Button label="x" position={[3,3]} onClick={handleOperator(OperatorType.Multiply)}></Button>
+                <Button label="÷" position={[3,4]} onClick={handleOperator(OperatorType.Divide)}></Button>
+                <Button label="=" position={[3,5]} onClick={handleOperator(OperatorType.Equals)}></Button>
                 <Button buttonType={ButtonType.Number} label="9" position={[2,2]} onClick={handleNumerical(9)}></Button>
                 <Button buttonType={ButtonType.Number} label="8" position={[1,2]} onClick={handleNumerical(8)}></Button>
                 <Button buttonType={ButtonType.Number} label="7" position={[0,2]} onClick={handleNumerical(7)}></Button>

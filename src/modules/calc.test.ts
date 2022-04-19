@@ -93,4 +93,28 @@ test('derives final state with addition and subtraction', () =>{
     expect(state.displayValue).toEqual(10);
 });
 
+test('derives final state with multiplication', () =>{
+    const inputs: Array<CalcInput> = [
+        {type: InputType.Numerical, value: 8},
+        {type: InputType.Operator, operator: OperatorType.Multiply },
+        {type: InputType.Numerical, value: 3},
+        {type: InputType.Operator, operator: OperatorType.Equals }
+    ]
+
+    const state = Calc.getState(inputs);
+    expect(state.displayValue).toEqual(24);
+});
+
+test('derives final state with division', () =>{
+    const inputs: Array<CalcInput> = [
+        {type: InputType.Numerical, value: 12},
+        {type: InputType.Operator, operator: OperatorType.Divide },
+        {type: InputType.Numerical, value: 3},
+        {type: InputType.Operator, operator: OperatorType.Equals }
+    ]
+
+    const state = Calc.getState(inputs);
+    expect(state.displayValue).toEqual(4);
+});
+
 // Add tests for Multiplication and Division
