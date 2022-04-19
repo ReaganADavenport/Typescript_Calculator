@@ -33,20 +33,21 @@ const Calculator: React.FC<{}> = () => {
         setInputs(prev => [...prev, input])
     }
 
+    const handleAllClear = () => setInputs([]);
+
     const handleNumerical = (value: number) => () => {
         appendInput({ type: InputType.Numerical, value });
     }
 
     const handleOperator = (operator: OperatorType ) => () => {
         appendInput({ type: InputType.Operator, operator });
-    
     }
 
     return(
         <Container>
             <Grid>
                 <Display>{state.displayValue}</Display>
-                <Button label="AC" position={[0,1]} width={2}></Button>
+                <Button label="AC" position={[0,1]} width={2} onClick={handleAllClear}></Button>
                 <Button label="Oops" position={[2,1]} width={2}></Button>
                 <Button label="+" position={[3,2]} onClick={handleOperator(OperatorType.Add)}></Button>
                 <Button label="-" position={[3,3]} onClick={handleOperator(OperatorType.Subtract)}></Button>
