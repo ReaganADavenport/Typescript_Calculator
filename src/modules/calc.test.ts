@@ -116,5 +116,3 @@ test('derives final state with division', () =>{
     const state = Calc.getState(inputs);
     expect(state.displayValue).toEqual(4);
 });
-
-// Add tests for Multiplication and Division

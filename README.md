@@ -1,5 +1,13 @@
 # Typescript Calculator
 
+This project was a way to teach myself Typescript, and to remember how to make tests.
+
+Here is a demo of the app in action: https://youtube.com/shorts/3U6J98gFvPQ?feature=share
+
+Here is a screenshot of what it should look like:
+
+<img src="/images/calculator.png" alt="calculator">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
