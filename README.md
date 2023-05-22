@@ -2,6 +2,8 @@
 
 This project was a way to teach myself Typescript, and to remember how to make tests.
 
+What better way to do both than a calculator. This particular calculator adds, subtracts, mulitplies, and divides.
+
 Here is a demo of the app in action: https://youtube.com/shorts/3U6J98gFvPQ?feature=share
 
 Here is a screenshot of what it should look like:
